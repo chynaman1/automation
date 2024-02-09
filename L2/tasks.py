@@ -43,7 +43,7 @@ def store_receipt_as_pdf(order_number):
   s.image(list_file,h=100,)
   s.output("output/receipt/"+order_number+".pdf")
   y=s.output("output/receipt/"+order_number+".pdf")
-  zip(order_number)
+
   return y
 
   
@@ -53,19 +53,20 @@ def store_receipt_as_pdf(order_number):
   #DocumentKeywords.html_to_pdf(self=DocumentKeywords,content=receipt,output_path="output/"+order_number+".pdf")
   
   
-
-
-# def zip(number):
-   
-   
-#    with zipfile.ZipFile("output/receipt/robot_files.zip", mode="w") as archive:
-#     for filename in number :
-#      archive.write(filename)
-#      return filename
- 
-
-     
   
+  
+def zl():
+   
+ directory = '.output/receipt/'
+  
+    
+  
+ with zipfile('Robot_files.zip','w') as zip: 
+  for file in directory: 
+            zip.write(file) 
+  
+
+ 
 def get_orders(ct):
   
  
@@ -156,11 +157,14 @@ def fill():
    page.locator("#preview").click()
    page.locator("#order").click()
    store_receipt_as_pdf(t[0])
+   zl()
    page.locator("#order-another").click()
    page.locator(".btn-dark").click()
    
   elif s==20:
-   break
+    break
+
+      
   
 
   

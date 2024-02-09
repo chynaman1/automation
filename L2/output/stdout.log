@@ -3,28 +3,28 @@ Collecting tasks from: tasks.py
 ============================ Running: [96mminimal_task[0m =============================
 [96mminimal_task[0m status: [91mFAIL
 [0m[91m
-[Errno 2] No such file or directory: '1'
+[Errno 2] No such file or directory: 'output/receipt/1.pdf'
 [0m==================== Full Traceback (running [96mminimal_task[0m) =====================
 [91mTraceback (most recent call last):
-  File "/Users/Shared/robocorp/ht/14527d1_b1f3c24_691db988/lib/python3.10/site-packages/robocorp/tasks/_commands.py", line 430, in run
+  File "/Users/Shared/robocorp/ht/1d72b67_b1f3c24_1c0bc041/lib/python3.10/site-packages/robocorp/tasks/_commands.py", line 438, in run
     result = task.run(*args, **kwargs)
-  File "/Users/Shared/robocorp/ht/14527d1_b1f3c24_691db988/lib/python3.10/site-packages/robocorp/tasks/_task.py", line 79, in run
+  File "/Users/Shared/robocorp/ht/1d72b67_b1f3c24_1c0bc041/lib/python3.10/site-packages/robocorp/tasks/_task.py", line 78, in run
     return self.method(*args, **kwargs)
-  File "/Users/jacklittleauto/l2_automation/tasks.py", line 30, in minimal_task
+  File "/Users/mrlittle/GIT/automation/L2/tasks.py", line 30, in minimal_task
     close_modal()
-  File "/Users/jacklittleauto/l2_automation/tasks.py", line 88, in close_modal
+  File "/Users/mrlittle/GIT/automation/L2/tasks.py", line 91, in close_modal
     fill()
-  File "/Users/jacklittleauto/l2_automation/tasks.py", line 156, in fill
+  File "/Users/mrlittle/GIT/automation/L2/tasks.py", line 159, in fill
     store_receipt_as_pdf(t[0])
-  File "/Users/jacklittleauto/l2_automation/tasks.py", line 46, in store_receipt_as_pdf
-    zip(order_number)
-  File "/Users/jacklittleauto/l2_automation/tasks.py", line 61, in zip
-    archive.write(filename)
-  File "/Users/Shared/robocorp/ht/14527d1_b1f3c24_691db988/lib/python3.10/zipfile.py", line 1741, in write
-    zinfo = ZipInfo.from_file(filename, arcname,
-  File "/Users/Shared/robocorp/ht/14527d1_b1f3c24_691db988/lib/python3.10/zipfile.py", line 504, in from_file
-    st = os.stat(filename)
-FileNotFoundError: [Errno 2] No such file or directory: '1'
+  File "/Users/mrlittle/GIT/automation/L2/tasks.py", line 44, in store_receipt_as_pdf
+    s.output("output/receipt/"+order_number+".pdf")
+  File "/Users/Shared/robocorp/ht/1d72b67_b1f3c24_1c0bc041/lib/python3.10/site-packages/fpdf/fpdf.py", line 4975, in output
+    Path(name).write_bytes(self.buffer)
+  File "/Users/Shared/robocorp/ht/1d72b67_b1f3c24_1c0bc041/lib/python3.10/pathlib.py", line 1143, in write_bytes
+    with self.open(mode='wb') as f:
+  File "/Users/Shared/robocorp/ht/1d72b67_b1f3c24_1c0bc041/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: 'output/receipt/1.pdf'
 
 [0m================================================================================
-Robocorp Log (html): /Users/jacklittleauto/l2_automation/output/log.html
+Robocorp Log (html): /Users/mrlittle/GIT/automation/L2/output/log.html

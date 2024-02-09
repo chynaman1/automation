@@ -1,0 +1,6 @@
+{
+    "python.analysis.extraPaths": [
+        "/Users/mrlittle/GIT/automation/L2/."
+    ],
+    "python.terminal.activateEnvironment": false
+}
