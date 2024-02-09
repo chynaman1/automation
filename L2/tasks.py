@@ -4,12 +4,14 @@ from robocorp import vault
 from RPA.HTTP import HTTP
 from RPA.Tables import Tables
 from fpdf import FPDF
+from RPA.Archive import Archive
 import csv
 import io
 import requests
 import os
 import zipfile
 import time
+import glob
 
 
 
@@ -41,10 +43,10 @@ def store_receipt_as_pdf(order_number):
   s.set_font('helvetica', size=12)
   s.write_html(receipt)
   s.image(list_file,h=100,)
-  s.output("output/receipt/"+order_number+".pdf")
-  y=s.output("output/receipt/"+order_number+".pdf")
+  s.output("output/"+order_number+".pdf")
+  # y=s.output("output/robots_orders/"+order_number+".pdf")
 
-  return y
+  
 
   
   
@@ -56,16 +58,13 @@ def store_receipt_as_pdf(order_number):
   
   
 def zl():
-   
- directory = '.output/receipt/'
-  
     
-  
- with zipfile('Robot_files.zip','w') as zip: 
-  for file in directory: 
-            zip.write(file) 
-  
+ zl = Archive()
 
+ zl.archive_folder_with_tar('./output/', 'robot.zip', recursive=True)
+ files = zl.list_archive('robot.zip')
+ for file in files:
+   return file
  
 def get_orders(ct):
   
@@ -162,6 +161,8 @@ def fill():
    page.locator(".btn-dark").click()
    
   elif s==20:
+    for filename in glob.glob('output/*.pdf'):
+     os.remove(filename)
     break
 
       
@@ -169,6 +170,7 @@ def fill():
 
   
   
+
   
   
 
@@ -176,4 +178,3 @@ def fill():
   
 
  
-  
